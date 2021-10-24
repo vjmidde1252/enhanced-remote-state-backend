@@ -5,16 +5,15 @@ terraform {
       version = "~> 3.0"
     }
   }
-  backend "s3" {
-    bucket = "middebucket-1252"
-    key    = "Development"
-    region = "us-east-2"
-    dynamodb_table = "Devlopment_locking"
+  backend "remote" {
+    organization = "midde-org"
+
+    workspaces {
+      name = "enhanced-remote-state-backend"
+    }
   }
 }
 
 # Configure the AWS Provider
 provider "aws" {
-  region = "us-east-2"
-  profile = "default"
 }

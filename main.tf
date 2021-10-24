@@ -10,3 +10,7 @@ module "module-apachedemo" {
   server_name   = var.server_name
 
 }
+
+output "public_ip" {
+  value = module.module-apachedemo.public_ip
+}
